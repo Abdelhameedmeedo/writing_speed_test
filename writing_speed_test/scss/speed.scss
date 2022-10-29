@@ -1,0 +1,271 @@
+$mainColor:white;
+$helpColor:#6167f3;
+$positionAbsolute:absolute;
+$positionRelative:relative;
+$logoNameAndTimePadding:10px 5px;
+$displayFlex:flex;
+@mixin playButton {
+    width: 325px;
+    position: $positionAbsolute;
+    border: none;
+    right: 4.9%;
+    margin-top: -10px;
+    font-size: 20px;
+    background-color: #A629F3;
+    color: $mainColor;
+    padding: 5px 0;
+}
+.speed-test{
+    .logo-name{
+        background-color: #6167F3;
+        padding: $logoNameAndTimePadding;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        .logo{
+            display: $displayFlex;
+            justify-content: space-around;
+            svg{ font-size: 38px;color: #DC9E42;}
+        }
+        .name{
+            display: $displayFlex;
+            justify-content: space-around;
+            font-size: 25px;
+            color: $mainColor;
+        }
+    }
+    .time{
+        background-color: #F061F3;
+        padding: $logoNameAndTimePadding;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        align-items: baseline;
+        color: $mainColor;
+        font-size: 20px;
+        font-weight: 600;
+        .left-time,.total-time{
+            display: flex;
+            justify-content: center;  
+        }
+        .change-time{
+            position: $positionRelative;
+            left: 30%;
+            .help{
+                position: $positionAbsolute;
+                background: $helpColor;
+                top: -66px;
+                width: 51px;
+                height: 51px;
+                border-radius: 50px;
+                border: 1px solid $mainColor;
+                line-height: normal;
+                display: $displayFlex;
+                align-items: center;
+                text-align: center;
+                font-size: 11px;
+                left: 12%;
+            }
+            .help::after{
+                position: $positionAbsolute;
+                content: '';
+                height: 0;
+                left: 23%;
+                top: 48px;
+                width: 0;
+                border-top: 15px solid $helpColor;
+                border-left: 15px solid transparent;
+                border-right: 15px solid transparent;
+                border-bottom: 15px solid transparent;
+                border-radius: 10px;
+            }
+            select{
+                width: 50px;
+                height: 30px;
+                outline: none;
+                border: none;
+                border-radius: 8px;
+                padding-left: 5px;
+            }
+        }
+     }
+    .content{
+        background-color: #D9D9D9;
+        padding: $logoNameAndTimePadding;
+        min-height: 83vh;
+      .score-play{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        .score{
+            display: $displayFlex;
+            justify-content: center;
+            background-color: #3FC063;
+            width: 325px;
+            font-size: 20px;
+            margin-top: -10px;
+            margin-left: -5px;
+            color:  $mainColor;
+            padding: 5px 0;
+        }
+        .play{
+           @include playButton();
+        }
+        button.non-click{
+            @include playButton();
+            opacity: .3;
+            pointer-events: none;
+        }
+      }
+        .showing-text{
+            margin-top: 5%;
+            background-color: #6167F3;
+            width: 200px;
+            text-align: center;
+            position: $positionAbsolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 200px;
+            border-radius: 50%;
+            line-height: 8;
+            font-size: 25px;
+            color:  $mainColor;
+        }
+        input{
+            width: 350px;
+            border-radius: 10px;
+            outline: none;
+            caret-color: #A629F3;
+            position: $positionAbsolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 20%;
+            border: none;
+            height: 50px;
+            padding: 0 15px;
+            font-size: 20px;
+            text-align: center;
+            pointer-events: none;
+        }
+    }
+
+}
+//no items in words array
+.no-items{
+    position: $positionAbsolute;
+    width: 200px;
+    height: 35px;
+    top: 27%;
+    background-color: black;
+    color: $mainColor;
+    left: 40%;
+    z-index: 1;
+    display: $displayFlex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+//game over popup
+.game-over{
+    position:$positionAbsolute ;
+    height: 100%;
+    width: 100%;
+    background: gray;
+    top: 0;
+    padding: 10px 10px;
+    opacity: .8;
+    .close-btn{
+        position: $positionAbsolute;
+        width: 50px;
+        height: 50px;
+        border-bottom-left-radius: 30px;
+        background-color: red;
+        color:  $mainColor;
+        top: 32.6%;
+        right: 25.4%;
+        z-index: 1;
+        border: none;
+        font-size: 35px;
+        text-align: center;
+        display: $displayFlex;
+        justify-content: center;
+        line-height: 1.1;
+    }
+    .close-btn:hover{opacity: .7;}
+    span{
+        position: $positionRelative;
+        width: 50%;
+        height: 20%;
+        transform: translate(50%, 160%);
+        top: 0;
+        background: black;
+        color:  $mainColor;
+        display: $displayFlex;
+        text-align: center;
+        font-size: 30px;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width:768px){
+    .speed-test {
+        .logo-name{
+            .logo svg{font-size: 35px;}
+            .name{font-size: 22px;}
+        }
+        .time{
+            .change-time{
+                left: 10%;
+                select{
+                    width: 40px;
+                    height: 25px;
+                    text-align: center;
+                }
+                .help{
+                    border-radius: unset;
+                    height: 21px;
+                    top: -27px;
+                    font-size: 9px;
+                    left: 18px;
+                    border: none;
+                    justify-content: center;
+                    border-bottom-left-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                }
+                .help::after{border: none;}
+            }
+        }
+        .content{
+            .score-play{
+                display: grid;
+                grid-template-columns: 50% 50%;
+                .score{width: 200px;}
+                .play{width: 200px;right: 0;}
+                button.non-click{
+                    width: 200px;
+                    right: 0;
+                }
+            }
+            .showing-text{
+                border-radius: 15px;
+                width: 200px;
+                height: 100px;
+                display: $displayFlex;
+                align-items: center;
+                justify-content: center;
+                top: 25%;
+            }
+            input{top: 50%;}
+        }
+    }
+    .game-over {
+        span{    
+            width: 90%;
+            right: 39.5%;
+            top: -5%;
+        }
+        .close-btn{
+            top: 27.61%;
+            right: 27px;
+        }
+    }
+}
